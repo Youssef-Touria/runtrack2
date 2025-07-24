@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Jour02 - Job01</title>
-</head>
-<body>
-
-<form method="GET" action="">
-    <label for="prenom">Entrez votre prénom :</label>
-    <input type="text" name="prenom" id="prenom">
-    <button type="submit">Valider</button>
-</form>
-
 <?php
-// Vérifie si le champ 'prenom' existe
-if (isset($_GET['prenom'])) {
-    echo "<p>Bonjour " . htmlspecialchars($_GET['prenom']) . " !</p>";
+<?php
+// Affiche tous les nombres de 0 à 1337 avec un retour à la ligne
+for ($i = 0; $i <= 1337; $i++) {
+    // Si le nombre est 42, on le met en gras et souligné
+    if ($i == 42) {
+        echo "<b><u>$i</u></b><br />";
+    } else {
+        echo $i . "<br />";
+    }
 }
 ?>
-
-</body>
-</html>
+// ...existing code...
+```// filepath: c:\wamp64\www\runtrack2\jour02\job01\index.php
+<?php
+// Affiche tous les nombres de 0 à 1337 avec un retour à la ligne
+for ($i = 0; $i <= 1337; $i++) {
+    // Si le nombre est 42, on le met en gras et souligné
+    if ($i == 42) {
+        echo "<b><u>$i</u></b><br />";
+    } else {
+        echo $i . "<br />";
+    }
+}
+?>
+// ...existing
