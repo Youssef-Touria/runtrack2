@@ -1,5 +1,4 @@
 <?php
-<?php
 // Hauteur du triangle
 $hauteur = 5;
 
