@@ -1,0 +1,22 @@
+body {
+    background-color: #fff0f5;
+    font-family: 'Courier New', monospace;
+}
+
+form {
+    background: #ffe4e1;
+    padding: 20px;
+    border-radius: 0;
+    width: 250px;
+    margin: 50px auto;
+    text-align: center;
+    border: 2px dashed #ff69b4;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
