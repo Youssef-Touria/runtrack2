@@ -1,42 +1,35 @@
 <?php
-
 // Connexion à la base de données
-$mysqli = new mysqli("localhost", "root", "", "jour09");
+$host = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "jour09";
+
+$conn = new mysqli($host, $user, $pass, $dbname);
 
 // Vérifier la connexion
-if ($mysqli->connect_error) {
-    die("Erreur de connexion : " . $mysqli->connect_error);
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
 }
 
-// Requête SQL pour récupérer la superficie totale des étages
+// Requête SQL pour calculer la superficie totale
 $sql = "SELECT SUM(superficie) AS superficie_totale FROM etages";
-$result = $mysqli->query($sql);
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Superficie totale des étages</title>
-</head>
-<body>
-    <h2>Superficie totale des étages</h2>
-    <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>superficie_totale</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            if ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . htmlspecialchars($row['superficie_totale']) . "</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-</body>
-</html>
-<?php
+$result = $conn->query($sql);
+
+// Affichage en tableau HTML
+echo "<table border='1' cellpadding='5' cellspacing='0'>";
+echo "<tr><th>superficie_totale</th></tr>";
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row['superficie_totale'] . "</td></tr>";
+    }
+} else {
+    echo "<tr><td>Aucune donnée trouvée</td></tr>";
+}
+
+echo "</table>";
+
 // Fermer la connexion
-$mysqli->close();
+$conn->close();
 ?>
