@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Requête SQL pour calculer la superficie totale
-$sql = "SELECT SUM(superficie) AS superficie_totale FROM etages";
+$sql = "SELECT SUM(superficie) AS superficie_totale FROM etage";
 $result = $conn->query($sql);
 
 // Affichage en tableau HTML
