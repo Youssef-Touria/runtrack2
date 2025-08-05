@@ -1,27 +1,40 @@
 <?php
-// Connexion à la base de données
 $mysqli = new mysqli("localhost", "root", "", "jour09");
 
-// Vérifier la connexion
 if ($mysqli->connect_error) {
     die("Erreur de connexion : " . $mysqli->connect_error);
 }
 
-// Récupérer uniquement les trois salles
 $sql = "SELECT nom, capacite FROM salles WHERE nom IN ('Lounge', 'Studio Son', 'Broadcasting')";
 $result = $mysqli->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Liste des salles</title>
+<link rel="stylesheet" href="style.css"> <!-- Lien vers le CSS -->
+</head>
+<body>
 
-// Affichage du tableau HTML
-echo "<table border='1' cellpadding='5' cellspacing='0'>";
-echo "<tr><th>Nom</th><th>Capacité</th></tr>";
+<h2 style="text-align:center;">Nom et capacité des salles</h2>
 
-while ($row = $result->fetch_assoc()) {
-    echo "<tr><td>{$row['nom']}</td><td>{$row['capacite']}</td></tr>";
-}
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Capacité</th>
+    </tr>
+    <?php while ($row = $result->fetch_assoc()) { ?>
+        <tr>
+            <td><?php echo htmlspecialchars($row['nom']); ?></td>
+            <td><?php echo htmlspecialchars($row['capacite']); ?></td>
+        </tr>
+    <?php } ?>
+</table>
 
-echo "</table>";
 
-// Fermer la connexion
+</body>
+</html>
+<?php
 $mysqli->close();
 ?>
-
