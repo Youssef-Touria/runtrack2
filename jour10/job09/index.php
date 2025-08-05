@@ -27,6 +27,7 @@ if ($result && $result->num_rows > 0) {
     foreach ($fields as $field) {
         echo "<th>" . $field->name . "</th>";
     }
+    
     echo "</tr></thead><tbody>";
 
     // Affichage des lignes
