@@ -1,39 +1,27 @@
 <?php
-// 1. Connexion à la base de données
+// Connexion à la base de données
 $mysqli = new mysqli("localhost", "root", "", "jour09");
 
-// Vérification de la connexion
+// Vérifier la connexion
 if ($mysqli->connect_error) {
-    die("Échec de la connexion : " . $mysqli->connect_error);
+    die("Erreur de connexion : " . $mysqli->connect_error);
 }
 
-// 2. Requête SQL
-$sql = "SELECT nom, capacite FROM salles";
+// Récupérer uniquement les trois salles
+$sql = "SELECT nom, capacite FROM salles WHERE nom IN ('Lounge', 'Studio Son', 'Broadcasting')";
 $result = $mysqli->query($sql);
 
-// 3. Affichage du tableau HTML
-if ($result->num_rows > 0) {
-    echo "<table border='1' cellpadding='5' cellspacing='0'>";
-    echo "<thead>";
-    echo "<tr><th>Nom</th><th>Capacité</th></tr>";
-    echo "</thead>";
-    echo "<tbody>";
-    
-    // 4. Parcours des résultats
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row["nom"] . "</td>";
-        echo "<td>" . $row["capacite"] . "</td>";
-        echo "</tr>";
-    }
-    
-    echo "</tbody>";
-    echo "</table>";
-} else {
-    echo "Aucune donnée trouvée.";
+// Affichage du tableau HTML
+echo "<table border='1' cellpadding='5' cellspacing='0'>";
+echo "<tr><th>Nom</th><th>Capacité</th></tr>";
+
+while ($row = $result->fetch_assoc()) {
+    echo "<tr><td>{$row['nom']}</td><td>{$row['capacite']}</td></tr>";
 }
 
-// Fermeture de la connexion
+echo "</table>";
+
+// Fermer la connexion
 $mysqli->close();
 ?>
 
