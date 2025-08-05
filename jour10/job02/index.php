@@ -36,3 +36,4 @@ if ($result->num_rows > 0) {
 // Fermeture de la connexion
 $mysqli->close();
 ?>
+
