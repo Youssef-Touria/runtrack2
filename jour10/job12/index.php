@@ -12,8 +12,8 @@ if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
 
-// Requête SQL : prénom, nom et date de naissance
-$sql = "SELECT prenom, nom, date_naissance 
+// Requête SQL avec le bon nom de colonne
+$sql = "SELECT prenom, nom, naissance 
         FROM etudiants 
         WHERE naissance BETWEEN '1998-01-01' AND '2018-12-31'";
 
@@ -41,6 +41,7 @@ $result = $conn->query($sql);
                 }
                 echo "</tr></thead><tbody>";
 
+                // Parcours des résultats
                 $result->data_seek(0);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
