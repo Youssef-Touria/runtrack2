@@ -12,10 +12,10 @@ if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
 
-// Requête SQL : récupérer le nom des salles et le nom de leur étage
-$sql = "SELECT salles.nom AS salle, etages.nom AS etage
+// Requête SQL
+$sql = "SELECT salles.nom AS salle, etage.nom AS etage
         FROM salles
-        INNER JOIN etages ON salles.id_etage = etages.id";
+        INNER JOIN etage ON salles.id_etage = etage.id";
 
 $result = $conn->query($sql);
 ?>
