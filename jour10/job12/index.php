@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 // Requête SQL : prénom, nom et date de naissance
 $sql = "SELECT prenom, nom, date_naissance 
         FROM etudiants 
-        WHERE date_naissance BETWEEN '1998-01-01' AND '2018-12-31'";
+        WHERE naissance BETWEEN '1998-01-01' AND '2018-12-31'";
 
 $result = $conn->query($sql);
 ?>
